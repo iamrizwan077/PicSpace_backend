@@ -1,0 +1,26 @@
+{% load i18n %}
+{% autoescape off %}
+Hello from {{current_site}}!
+
+You're receiving this e-mail because you or someone else has requested a password for your user account at {{ site_domain }}.
+It can be safely ignored if you did not request a password reset.
+
+{% blocktrans %}
+Please go to the following page and choose a new password:
+{% endblocktrans %}
+{% block reset_link %}
+{{ path }}
+{% endblock %}
+{% blocktrans %}
+Your email, in case you've forgotten: {{ user.get_username }}
+{% endblocktrans %}
+
+
+{% blocktrans %}
+Thanks for using our site!
+{% endblocktrans %}
+
+{% blocktrans %}
+The {{current_site}} team
+{% endblocktrans %}
+{% endautoescape %}
