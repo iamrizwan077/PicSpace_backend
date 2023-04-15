@@ -28,7 +28,7 @@ from picspace import serializers
 #Verify Email URL view
 class AccountAdapter(DefaultAccountAdapter):
     def get_email_confirmation_url(self, request, emailconfirmation):
-        return f'http://localhost:3000/account-confirm-email/{emailconfirmation.key}'
+        return f'https://picspacevault.netlify.app/account-confirm-email/{emailconfirmation.key}'
 
 
 #Password Reset form View
@@ -52,7 +52,7 @@ class CustomAllAuthPasswordResetForm(AllAuthPasswordResetForm):
 
         for user in self.users:
             temp_key = token_generator.make_token(user)
-            path = f"http://localhost:3000/reset-password-confirm/{user_pk_to_url_str(user)}/{temp_key}/"
+            path = f"https://picspacevault.netlify.app/reset-password-confirm/{user_pk_to_url_str(user)}/{temp_key}/"
 
             # Values which are passed to password_reset_key_message.txt
             url = build_absolute_uri(request, path)
@@ -89,7 +89,7 @@ class MyPasswordResetSerializer(PasswordResetSerializer):
 #Google Authorization Code Grant View
 class GoogleLogin(SocialLoginView):
     adapter_class = GoogleOAuth2Adapter
-    callback_url = 'http://localhost:3000'
+    callback_url = 'https://picspacevault.netlify.app'
     client_class = OAuth2Client
 
 
